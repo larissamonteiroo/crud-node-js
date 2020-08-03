@@ -15,11 +15,11 @@ router.get('/new', function(req, res, next) {
 });
 
 /* POST New page */
-router.post('new',  function(req, res){
+router.post('/new',  function(req, res){
   var nome = req.body.nome;
   var idade = parseInt(req.body.idade);
-  global.db.insertOne({nome, idade}, (err, result) => {
-          if(err) { return console.log(err); }
+  global.db.insert({nome, idade}, (e, result) => {
+          if(e) { return console.log(e); }
           res.redirect('/');
   });
 });

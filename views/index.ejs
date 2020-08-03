@@ -6,15 +6,18 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <p>
+      <%= docs.length %> clientes cadastrados!
+    </p>
     <ul>
       <% docs.forEach(function(customer){ %>
       <li>
         <a href="/edit/<%= customer._id %>">
           <%= customer.nome %>
         </a>
-        <a href="/delete/<%= customer.id %>"
+        <a href="/delete/<%= customer._id %>"
           onclick="return confirm('Tem certeza que deseja excluir?')">
-          <button>Excluir</button>
+          X
         </a>
       </li>
       <% }) %>

@@ -1,7 +1,11 @@
 const mongoClient = require("mongodb").MongoClient;
-mongoClient.connect("mongodb://localhost", { useUnifiedTopology: true })
-            .then(conn => global.conn = conn.db("crud-node-js"))
-            .catch(err => console.log(err));
+mongoClient.connect("mongodb://localhost:27017",
+            { useUnifiedTopology: true }, 
+            (err, conn) => {
+                if(err) return console.log(err);
+                global.conn = conn.db("crud-node-js")
+                console.log("Conected to MongoDB")
+            })
 
 function findAll(callback){
     global.conn.collection("customers").find({}).toArray(callback);

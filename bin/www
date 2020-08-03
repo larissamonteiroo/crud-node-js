@@ -1,12 +1,11 @@
-#! carregamento o modulo db
+#!/usr/bin/env node
 
-global.db = require('../db');
-
-//#!/usr/bin/env node
 
 /**
  * Module dependencies.
  */
+
+global.db = require('../db');
 
 var app = require('../app');
 var debug = require('debug')('crud-node-js:server');
