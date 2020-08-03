@@ -5,24 +5,72 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
+    <section class="top">
+      <div class="top-text">
+        <h1><%= title %></h1>
+      </div>
+
+        <div class="top-button">
+          <a href="./new">
+            <input type="button" value="Novo Cliente"/>
+          </a>
+        </div>
+    </section>
+    
+    <section class="table">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Imagem</th>
+            <th>Nome</th>
+            <th>Idade</th>
+            <th>Descrição</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <% docs.forEach(function(customer){ %>
+            <th><%= customer._id %></th>
+            <th>Fazer upload</th>
+            <th><%= customer.nome %></th>
+            <th><%= customer.idade %></th>
+            <th>Fazer Descrição</th>
+            <th>
+              <a href="/view/<%= customer._id%>">
+                <input type="button" value="Visualizar">
+              </a>
+              <a href="/edit/<%= customer._id %>">
+                <input type="button" value="Editar">
+              </a>
+              <a href="/delete/<%= customer._id %>"
+                onclick="return confirm('Tem certeza que deseja excluir?')">
+                <input type="button" value="Excluir">
+              </a>
+            </th>
+            <% }) %>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="pagination">
+      <div>
+        <ul>
+          <li class="disabled"><a>&lt; Anterior</a></li>
+          <li class="disabled"><a href="#">1</a></li>
+          <li class="#"><a href="#">2</a></li>
+          <li class="#"><a href="#">3</a></li>
+          <li class="next"><a href="#" rel="next">Próximo &gt;</a></li>
+        </ul>
+      </div>
+    </section>
+
     <p>
       <%= docs.length %> clientes cadastrados!
     </p>
-    <ul>
-      <% docs.forEach(function(customer){ %>
-      <li>
-        <a href="/edit/<%= customer._id %>">
-          <%= customer.nome %>
-        </a>
-        <a href="/delete/<%= customer._id %>"
-          onclick="return confirm('Tem certeza que deseja excluir?')">
-          X
-        </a>
-      </li>
-      <% }) %>
-    </ul>
-    <hr/>
-    <a href="/new">Cadastrar novo cliente</a>
+
   </body>
 </html>

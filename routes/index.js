@@ -9,6 +9,15 @@ router.get('/', function(req, res) {
   });
 });
 
+/* GET view page.*/
+router.get('/view/:id', function(req, res, next) {
+  var id = req.params.id;
+  global.db.findOne(id, (e, docs) => {
+      if(e) { return console.log(e); }
+      res.render('view', { title: 'Vizualização de Cliente', doc: docs[0], action: '/view/' + docs[0]._id });
+    });
+});
+
 /* GET New page. */
 router.get('/new', function(req, res, next) {
   res.render('new', { title: 'Novo Cadastro', doc: {"nome":"","idade":""}, action: '/new' });

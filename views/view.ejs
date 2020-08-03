@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+      <p>Id:<input type="text" name="id" value="<%= doc._id %>" /></p>
+      <p>Imagem:<input type="text" name="imagem" value="Fazer upload" /></p>
+      <p>Nome:<input type="text" name="nome" value="<%= doc.nome %>" /></p>
+      <p>Idade:<input type="number" name="idade" value="<%= doc.idade %>" /></p>
+      <p>Descrição:<input type="text" name="descricao" value="Fazer descrição" /></p>
+  </body>
+</html>
